@@ -1,3 +1,7 @@
 git add .
 git commit -m "xxxxxx"
 git push
+命令	作用	什么时候用
+git status	看现在啥情况(哪些文件改了/没提交)	最常用! 不确定时先敲它
+git log --oneline	看提交历史(每条一行)	想看"我都提交过啥"
+git pull	把 GitHub 上的更新拉下来	多设备/多人协作时,开工前先拉
