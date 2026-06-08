@@ -1,0 +1,71 @@
+1.创建新仓库：
+创建新仓库， Git init
+
+2.检出仓库：
+执行命令以创建一个本地仓库的克隆版本
+git clone /path/to/repository
+克隆远端服务器上的仓库：
+git clone username@host:/path/to/repository
+
+3.工作流
+git的三棵树：
+工作目录 Working Directory， 新建， 删除， 修改文件的区域
+暂存区 Index/Stage， 把修改放进提交区， 准备提交的change
+Head 最后一次提交的版本， 
+git commit -m "first commit"
+把暂存区域的版本存为最终版本
+
+4.总的流程：我进行文件的修改---working Directory---git add.---index/stage---git commit -m "message" ---HEAD
+（git add +file name/.）
+
+5.文件已经储存在本地的HEAD中
+把改动推送到github：git push origin main
+把你的本地仓库，连接到一个远程仓库：git remote add origin <server>
+
+6.分支：
+将特性开发绝缘开，分支 branch：从 main 主分支分出一个新分支，
+比如 feature，在这个分支上单独开发新功能。
+开发完成后，再把 feature 合并 merge 回 main。
+main：稳定版本；
+git branch feature-login
+git checkout feature-login
+或者一条命令切换：git checkout -b feature-login
+开发完成后， git checkout main， git merge feature-login
+git branch -d feature_x删除新建的分支
+git push origin <branch>上传branch到github
+
+7.更新与合并
+git pull将github上最新的代码拉取到本地
+git merge <branch>把另一个分支的改动，合并到你当前所在的分支。
+遇到conflict改完之后重新git add <filename>
+在合并改动之前，你可以使用如下命令预览差异：
+git diff <source_branch> <target_branch>
+
+8.标签 tag：给某一次 commit 贴一个“版本号标签”。
+git tag v1.0.0
+git tag查看所有标签
+tag需要有唯一指向性
+
+9.替换本地改动
+git restore filename   or
+git checkout -- <filename>
+撤销所有还没有git add的工作区修改
+git fetch origin
+git reset --hard origin/main
+强制变成 GitHub 最新版本， 不要本地版本
+git restore --staged 文件名
+取消已经git add的文件
+
+10.内建的图形化git：
+gitk
+
+用图形方式查看分支
+彩色的git输出
+git config color.ui true
+
+显示历史记录时，每个提交的信息只显示一行
+git log --oneline
+
+进入 交互式 add 模式。
+git add -i
+
