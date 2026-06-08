@@ -1,0 +1,26 @@
+第 1 步:查出新梯子的端口
+两个办法,任选一个:
+
+办法 A(最简单) —— 打开梯子软件,在设置里找这些字眼:
+
+端口 / Port / 混合端口 / HTTP 代理端口 / Mixed Port
+
+旁边的数字就是。
+
+办法 B —— 在 Git Bash 里敲这条命令查监听端口(就是我刚才用的):
+
+
+netstat -ano -p tcp | grep LISTENING | grep "127.0.0.1:"
+第 2 步:把新端口填给 Git
+假设新端口是 10809,就把两条命令里的数字换掉重敲:
+
+
+git config --global http.proxy http://127.0.0.1:10809
+git config --global https.proxy http://127.0.0.1:10809
+
+
+如果哪天你关了梯子,但 Git 代理还指着那个端口,Git 又会连不上(因为"房间"空了)。这时候把代理取消掉:
+
+
+git config --global --unset http.proxy
+git config --global --unset https.proxy
